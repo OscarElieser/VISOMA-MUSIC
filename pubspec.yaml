@@ -1,0 +1,20 @@
+name: visoma_music
+description: Reproductor personal de audio y video con modos local y online.
+publish_to: none
+version: 0.2.0+2
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  file_picker: ^10.3.10
+  just_audio: ^0.10.5
+  video_player: ^2.10.0
+  path_provider: ^2.1.5
+  connectivity_plus: ^7.3.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  uses-material-design: true
