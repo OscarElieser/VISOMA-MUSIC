@@ -16,50 +16,11 @@ import 'catalog.dart';
 
 void main() => runApp(const VisomaApp());
 
-const ink = Color(0xFF0B0B10);
-const panel = Color(0xFF1B1A22);
-const ember = Color(0xFFFF5B4A);
-const violet = Color(0xFFAA8CFF);
-
-/// VÍSOMA's original mark: two sound arcs around a moving central pulse.
-class VisomaMark extends StatelessWidget {
-  const VisomaMark({super.key, this.size = 28});
-  final double size;
-
-  @override
-  Widget build(BuildContext context) => SizedBox(
-    width: size, height: size,
-    child: CustomPaint(painter: _VisomaMarkPainter()),
-  );
-}
-
-class _VisomaMarkPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final stroke = Paint()..style = PaintingStyle.stroke
-      ..strokeWidth = size.width * .085..strokeCap = StrokeCap.round;
-    stroke.color = ember;
-    canvas.drawArc(Rect.fromCircle(center: center, radius: size.width * .38),
-      .75, 1.7, false, stroke);
-    stroke.color = violet;
-    canvas.drawArc(Rect.fromCircle(center: center, radius: size.width * .38),
-      3.88, 1.7, false, stroke);
-    final pulse = Path()
-      ..moveTo(size.width * .27, size.height * .53)
-      ..lineTo(size.width * .42, size.height * .53)
-      ..lineTo(size.width * .50, size.height * .32)
-      ..lineTo(size.width * .59, size.height * .68)
-      ..lineTo(size.width * .68, size.height * .47)
-      ..lineTo(size.width * .75, size.height * .47);
-    canvas.drawPath(pulse, Paint()..color = ember..style = PaintingStyle.stroke
-      ..strokeWidth = size.width * .06..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
+const ink = Color(0xFF0B101B);
+const panel = Color(0xFF192131);
+const ember = Color(0xFF53E4F4);
+const violet = Color(0xFFF16AD8);
+const brandLogo = 'assets/branding/logo_visoma-music.png';
 
 class VisomaApp extends StatelessWidget {
   const VisomaApp({super.key});
@@ -764,30 +725,27 @@ class _LibraryScreenState extends State<LibraryScreen> {
   );
 
   Widget _hero() => Container(
-    height: 216,
+    constraints: const BoxConstraints(minHeight: 226),
+    padding: const EdgeInsets.all(18),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(28),
       gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight,
-        colors: [Color(0xFF39202A), Color(0xFF231A27), Color(0xFF12131C)])),
-    child: Stack(children: [
-      Positioned(right: -18, top: -26, child: Container(width: 195, height: 195,
-        decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: ember.withValues(alpha: .35), width: 20)))),
-      Positioned(right: 30, top: 38, child: Container(width: 95, height: 95,
-        decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: violet.withValues(alpha: .55), width: 2)),
-        child: const Center(child: VisomaMark(size: 70)))),
-      Padding(padding: const EdgeInsets.all(24), child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text('TU UNIVERSO, A TU RITMO', style: TextStyle(color: violet,
-            fontWeight: FontWeight.bold, letterSpacing: 1.4, fontSize: 11)),
-          const Text('Elige qué vivir\nhoy.', style: TextStyle(fontSize: 31, fontWeight: FontWeight.w800, height: 1.05)),
-          Row(children: [
-            _badge(_offline ? 'SIN CONEXIÓN' : 'DOS MODOS',
-                _offline ? Icons.offline_bolt : Icons.wifi),
-            const SizedBox(width: 8),
-            _badge('${_items.length} ARCHIVOS', Icons.library_music, color: violet),
-          ]),
-        ],
-      )),
+        colors: [Color(0xFF173044), Color(0xFF30223E), Color(0xFF141720)])),
+    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text('TU UNIVERSO, A TU RITMO', style: TextStyle(color: violet,
+        fontWeight: FontWeight.bold, letterSpacing: 1.4, fontSize: 11)),
+      const SizedBox(height: 6),
+      Row(children: [
+        const Expanded(child: Text('Elige qué vivir\nhoy.',
+          style: TextStyle(fontSize: 29, fontWeight: FontWeight.w800, height: 1.07))),
+        Image.asset(brandLogo, width: 112, height: 116, fit: BoxFit.contain,
+          semanticLabel: 'Logo oficial de Vísoma Music'),
+      ]),
+      const SizedBox(height: 10),
+      Wrap(spacing: 8, runSpacing: 7, children: [
+        _badge(_offline ? 'SIN CONEXIÓN' : 'DOS MODOS',
+          _offline ? Icons.offline_bolt : Icons.wifi),
+        _badge('${_items.length} ARCHIVOS', Icons.library_music, color: violet),
+      ]),
     ]),
   );
 
@@ -939,7 +897,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
       const SizedBox(height: 20),
       Container(padding: const EdgeInsets.all(22), decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(23),
-        gradient: const LinearGradient(colors: [Color(0xFF442428), Color(0xFF231C31)])),
+        gradient: const LinearGradient(colors: [Color(0xFF1B4358), Color(0xFF3C254D)])),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Icon(Icons.offline_bolt, color: ember, size: 34),
           const SizedBox(height: 12),
@@ -989,7 +947,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
     final item = _current;
     if (item == null) return const SizedBox.shrink();
     return Container(margin: const EdgeInsets.fromLTRB(12, 0, 12, 6),
-      decoration: BoxDecoration(color: const Color(0xFF29232B), borderRadius: BorderRadius.circular(17)),
+      decoration: BoxDecoration(color: const Color(0xFF202B3C), borderRadius: BorderRadius.circular(17)),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         if (item.video && _video != null && _video!.value.isInitialized)
           ClipRRect(borderRadius: const BorderRadius.vertical(top: Radius.circular(17)),
@@ -1025,11 +983,12 @@ class _LibraryScreenState extends State<LibraryScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(backgroundColor: ink, titleSpacing: 18,
-      title: const FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
+      title: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
         child: Row(mainAxisSize: MainAxisSize.min, children: [
-        VisomaMark(), SizedBox(width: 9),
-        Text('VÍSOMA', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2)),
-        Text(' MUSIC', style: TextStyle(color: ember, fontWeight: FontWeight.w700, letterSpacing: 1)),
+        Image.asset(brandLogo, width: 36, height: 37,
+          semanticLabel: 'Logo Vísoma Music'), const SizedBox(width: 9),
+        const Text('VÍSOMA', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2)),
+        const Text(' MUSIC', style: TextStyle(color: ember, fontWeight: FontWeight.w700, letterSpacing: 1)),
       ])), actions: [
         IconButton(onPressed: _assistantDialog, tooltip: 'Comandos de Vísoma',
           icon: const Icon(Icons.auto_awesome, color: violet)),
@@ -1046,7 +1005,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
       _miniPlayer(),
     ])),
     bottomNavigationBar: NavigationBar(
-      backgroundColor: const Color(0xFF15141B), selectedIndex: _tab,
+      backgroundColor: const Color(0xFF121B29), selectedIndex: _tab,
       onDestinationSelected: (index) => setState(() => _tab = index),
       destinations: const [
         NavigationDestination(icon: Icon(Icons.auto_awesome_outlined),

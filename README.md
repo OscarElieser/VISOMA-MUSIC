@@ -1,4 +1,4 @@
-# VÍSOMA MUSIC — prototipo Flutter 0.5
+# VÍSOMA MUSIC — prototipo Flutter 0.6
 
 Reproductor personal de audio y video con biblioteca local y entrada online para archivos HTTPS **directos y autorizados**. No descarga ni extrae contenido de YouTube o Spotify. Una URL de la página de un video no es una URL directa de su archivo multimedia.
 
@@ -6,7 +6,7 @@ Reproductor personal de audio y video con biblioteca local y entrada online para
 
 1. Instala Flutter y Android Studio y configura un Android SDK.
 2. Descomprime el ZIP, abre PowerShell dentro de `visoma_music` y ejecuta `powershell -ExecutionPolicy Bypass -File .\setup_windows.ps1`.
-3. El script genera la carpeta Android, añade el permiso de internet y el nombre de la app, instala dependencias, analiza el código, ejecuta las pruebas y construye `build/app/outputs/flutter-apk/app-debug.apk`.
+3. El script genera la carpeta Android, aplica el logo oficial como icono, añade el permiso de internet y el nombre de la app, instala dependencias, analiza el código, ejecuta las pruebas y construye `build/app/outputs/flutter-apk/app-debug.apk`.
 4. Para depurar con un teléfono conectado usa `flutter run` dentro de la misma carpeta.
 
 ## Funciones disponibles en el código
@@ -15,7 +15,7 @@ Reproductor personal de audio y video con biblioteca local y entrada online para
 - Reproduce audio y video locales; incorpora archivos HTTPS directos de fuentes autorizadas para escuchar online.
 - Conserva fuentes online y favoritos en un índice JSON local; incluye búsqueda, eliminar elementos de la biblioteca y pausa/reanudación.
 - Modo viaje indica cuántos elementos son locales y cuántos requieren conexión.
-- Interfaz propia en tonos carbón, coral y violeta: Inicio, Biblioteca con filtros, Modo viaje y reproductor compacto con video integrado.
+- Interfaz propia en tonos azul profundo, cian y magenta tomada del logo oficial que proporcionaste: Inicio, Biblioteca con filtros, Modo viaje y reproductor compacto con video integrado.
 - Listas personales y cola de reproducción con anterior/siguiente; barra de progreso para buscar dentro de audio y video.
 - Letras `.lrc` sincronizadas y `.txt` sin marcas de tiempo, vinculadas manualmente a cada canción. Tocar una línea sincronizada mueve la reproducción a ese instante.
 - Descarga de archivos HTTPS **directos y autorizados** por Wi-Fi, con límite de 250 MB y verificación de respuesta multimedia. Guarda una copia local que aparece en Modo viaje.
@@ -33,4 +33,4 @@ El lector de catálogos interpreta la declaración de derechos publicada por el 
 
 Las pruebas de parser incluidas en `test/` pueden ejecutarse con `flutter test` cuando Flutter esté instalado. No se ejecutaron aquí.
 
-El diseño se integra directamente con las acciones existentes; no incluye fotografías ni copia componentes gráficos de otras aplicaciones. El emblema de pulso y órbitas está dibujado con código Flutter y puede ajustarse durante la revisión visual.
+El archivo original `assets/branding/logo_visoma-music.png` se utiliza sin modificar en la cabecera, la pantalla de inicio y como fuente del icono Android. El texto del logo puede quedar demasiado pequeño en el icono del teléfono; conviene probarlo físicamente antes de publicar.

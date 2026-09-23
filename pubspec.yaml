@@ -1,7 +1,7 @@
 name: visoma_music
 description: Reproductor personal de audio y video con modos local y online.
 publish_to: none
-version: 0.5.0+5
+version: 0.6.0+6
 environment:
   sdk: '>=3.5.0 <4.0.0'
 dependencies:
@@ -16,5 +16,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 flutter:
   uses-material-design: true
+  assets:
+    - assets/branding/logo_visoma-music.png
+
+flutter_launcher_icons:
+  android: true
+  image_path: assets/branding/logo_visoma-music.png
+  adaptive_icon_background: '#0B101B'
+  adaptive_icon_foreground: assets/branding/logo_visoma-music.png

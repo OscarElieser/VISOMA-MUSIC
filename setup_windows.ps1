@@ -18,6 +18,8 @@ Set-Content -Path $manifestPath -Value $manifest -Encoding UTF8
 
 flutter pub get
 if ($LASTEXITCODE -ne 0) { throw 'No se pudieron descargar las dependencias.' }
+dart run flutter_launcher_icons
+if ($LASTEXITCODE -ne 0) { throw 'No se pudo aplicar el icono oficial de VÍSOMA MUSIC.' }
 flutter analyze
 if ($LASTEXITCODE -ne 0) { throw 'El análisis de Dart falló; revisa los mensajes anteriores.' }
 flutter test
