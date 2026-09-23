@@ -1,7 +1,7 @@
 name: visoma_music
 description: Reproductor personal de audio y video con modos local y online.
 publish_to: none
-version: 0.3.0+3
+version: 0.5.0+5
 environment:
   sdk: '>=3.5.0 <4.0.0'
 dependencies:
